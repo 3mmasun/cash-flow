@@ -15,8 +15,8 @@ jobs:
     docker:
       - image: circleci/openjdk:stretch
         auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          username: dockdockem
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
       - run: ./mvnw -Dmaven.test.skip=true package
