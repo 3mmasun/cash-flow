@@ -19,4 +19,12 @@ public class ExpenseService {
     public Optional<Expense> getExpenseById(int expenseId) {
         return expenseRepository.findById(expenseId);
     }
+
+    public void saveExpense(Expense theExpense) {
+        expenseRepository.save(theExpense);
+    }
+
+    public void deleteExpense(int expenseId) {
+        expenseRepository.deleteById(expenseId);
+    }
 }

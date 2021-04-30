@@ -50,4 +50,21 @@ public class ExpenseControllerTest {
         assertThat(result).isEqualTo(expense);
     }
 
-}
+    @Test
+    public void shouldReturnSingleExpense_whenAddExpenseIsSuccessful(){
+        Expense expense = new Expense("meal", "changi", 51.0f);
+
+        Expense result = expenseController.addExpense(expense);
+        assertThat(result).isEqualTo(expense);
+    }
+
+    @Test
+    public void shouldReturnSingleExpense_whenUpdateExpenseIsSuccessful(){
+        Expense expense = new Expense("meal", "changi", 51.0f);
+
+        Expense result = expenseController.updateExpense(expense);
+        assertThat(result).isEqualTo(expense);
+    }
+
+
+  }

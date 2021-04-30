@@ -6,19 +6,14 @@ workflows:
       - test:
           requires:
             - build
+      - package:
+          requires:
+            - build
+            - test
 
 version: 2.0
 
 jobs:
-  build:
-    docker:
-      - image: circleci/openjdk:stretch
-        auth:
-          username: dockdockem
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - checkout
-      - run: ./mvnw -Dmaven.test.skip=true package
   test:
     docker:
       - image: circleci/openjdk:stretch
@@ -28,3 +23,13 @@ jobs:
     steps:
       - checkout
       - run: ./mvnw test
+  build:
+    docker:
+      - image: circleci/openjdk:stretch
+        auth:
+          username: dockdockem
+          password: $DOCKERHUB_PASSWORD
+    working_directory: /tmp
+    steps:
+      - checkout
+      - run: ./mvnw -Dmaven.test.skip=true package
